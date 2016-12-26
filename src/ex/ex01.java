@@ -7,11 +7,53 @@
  * Author: 1050210XX 周永振老師
  */
 
+import java.util.Scanner;
+
 public class ex01 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner scn = new Scanner(System.in);
+		int a = scn.nextInt();
+		int data [] = new int [a];
+		int data1 []= new int [a];
+		for(int i=0;i<a;i++){
+			data[i]=scn.nextInt();
+			data1[i]=fun1(data[i]);
+		}
+		for(int i=0;i<a-1;i++){
+			for(int j=0;j<a-1;j++){
+				if(data1[j]>data1[j+1]){
+					int x =data[j];
+					data[j]=data[j+1];
+					data[j+1]=x;
+					int y= data1[j];
+					data1[j]=data1[j+1];
+					data1[j+1]=y;
+				}else if(data1[j]==data1[j+1]){
+					if(data[j]>data[j+1]){
+						int x=data[j];
+						data[j]=data[j+1];
+						data[j+1]=x;
+						int y= data1[j];
+						data1[j]=data1[j+1];
+						data1[j+1]=y;
+					}
+				}
+			}
+		}
+		for(int i=0;i<a;i++){
+			System.out.print(data[i]+" ");
+		}
+	}
+	public static int fun1(int x){
+		String a = Integer.toString(x);
+		int sum=0;
+		for(int i=0;i<a.length();i++){
+			sum+=x%10;
+			x/=10;
+		}System.out.print(sum+" \n");
+		return sum;
 	}
 
 }
